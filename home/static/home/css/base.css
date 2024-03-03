@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Poppins:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Bhai 2', sans-serif;
+}
+
+                    /* ------------------- */
+                    /* Header starts here */
+                    /* --------------------- */
+header{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    /* background-color: white; */
+
+    background-color: #ffffff; /* Background color of the navbar */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+nav{
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    /* padding: 10px 60px; */
+}
+/* logo here */
+nav > .logo a{
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    color: #3D75D6;
+    text-decoration: none;
+    /* border: 1px solid red; */
+    transition:0.5sec ;
+}
+
+/* menu starts here */
+nav .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.menu a{
+    text-decoration: none;
+    padding: 15px;
+    margin: 0 5px;
+    display: block;
+    color: #00000099;
+    /* border: 1px solid white; */
+
+}
+.menu a:hover{
+    text-decoration: underline;
+}
+.menu a:nth-child(4){
+    border-right: 1px solid #0000004D;
+    
+}
+/* signup here */
+.menu .sigunup a{
+    font-weight: 570;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 34px;
+    padding: 4px 10px;
+
+}
+.menu .sigunup a:hover{
+    text-decoration: none;
+    background-color: #9fa1a324;
+}
+/* login here */
+.menu .login a{
+    color: #3D75D6;
+    padding: 3px 20px;
+    border: 1px solid #3D75D6;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 34px;
+}
+.menu .login a:hover{
+    background-color: #fafdff;
+    border: 1px solid #3D75D6;
+
+}

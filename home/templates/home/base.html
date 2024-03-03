@@ -1,0 +1,40 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyAcademia | Home</title>
+    <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+</head>
+<body>
+                <!-- ****************** -->
+                <!-- Header starts here -->
+                <!-- ****************** -->
+    <header>
+        <nav>
+            <div class="logo">
+               <a href="">PyAcademia</a>    
+            </div>
+            <div class="menu">
+                <a href="">Home</a> 
+                <a href="">Network</a> 
+                <a href="{% url 'feed:feed' %}">Feed</a> 
+                <a href="{% url 'chat:chat' %}">Messaging</a>
+
+                <div class="sigunup">
+                    <a href="{% url 'accounts:signup' %}">Join Now</a>
+                </div>
+                <div class="login">
+                    <a href="{% url 'login' %}">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+            
+    {% block content %}
+    
+    {% endblock %}
+</body>
+</html>

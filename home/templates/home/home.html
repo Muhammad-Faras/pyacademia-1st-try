@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    this is home <br>
-    <a href="{% url 'feed:feed' %}">go to feed </a> <br>
-    <a href="{% url 'login' %}">login</a> <br>
-    <a href="{% url 'accounts:signup' %}">signup</a>
-    <a href="{% url 'chat:chat' %}">chat</a>
-    {% for post in list_posts%}
-    <a href="{% url 'posts:detail_post' post.id %}">{{post.title}} {{post.created_date}}  {{post.visibility}} </a> 
-    
-     <hr>
-    {% endfor %}
+{% extends 'home/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    this is home <br>
+{% endblock %}
+    
+    <!-- {% for post in list_posts%}
+    <a href="{% url 'posts:detail_post' post.id %}">{{post.title}} {{post.created_date}}  {{post.visibility}} </a> 
+    {% endfor %}
+     <hr> -->
+
