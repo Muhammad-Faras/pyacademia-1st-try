@@ -1,11 +1,28 @@
 {% extends 'home/base.html' %}
-
+{% load static %}
 {% block content %}
-    this is home <br>
+    <section class="parent-section">
+        <div class="left-section">
+            <div class="lsec-title">
+                <h1>Welcome to your <br> Learning community</h1>
+            </div>
+            <div class="lsec-form">
+                <form action="">
+                    <label>Username</label>
+                    <input type="text">
+                    <label>Password</label>
+                    <input type="password">
+                    <a class="lsec-forgbtn" href="">Forgot Password</a>
+                    <button class="lsec-logbtn" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="rsec-bacimg">
+                <img src="{% static 'home/images/rsec-backimg.png' %}" alt="">
+            </div>
+        </div>
+    </section>
 {% endblock %}
     
-    <!-- {% for post in list_posts%}
-    <a href="{% url 'posts:detail_post' post.id %}">{{post.title}} {{post.created_date}}  {{post.visibility}} </a> 
-    {% endfor %}
-     <hr> -->
 
