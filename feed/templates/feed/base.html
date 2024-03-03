@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASE HTML</title>
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+            Hi {{ user.username }}! ||| <a href="{% url 'posts:create_posts' %}">Create Post</a>
+             <a href="{% url 'posts:my_posts'%}">My Posts</a>
+             <hr>
+        {% endif %}
+    </header>
+    <div>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>

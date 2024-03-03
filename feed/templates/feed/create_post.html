@@ -1,0 +1,17 @@
+{% extends 'feed/base.html' %} 
+
+{% block content %}
+    <h1>{{request.user}} is creating post</h1>
+    <form action="{% url 'posts:create_posts' %}" method="post">
+        {% csrf_token %}
+        <label for="">{{form.title.label_tag}}</label>
+        {{form.title}}
+
+        <label for="">{{form.content.label_tag}}</label>
+        {{form.content}}
+        <label for="">{{form.visibility.label_tag}}</label>
+        {{form.visibility}}
+        <button type="submit">Create Post</button>
+
+    </form>
+{% endblock %}

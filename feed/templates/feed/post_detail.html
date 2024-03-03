@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post detail</title>
+</head>
+<body>
+    {{post_to_update.title}} <br>
+    {{post_to_update.content}} <br>
+    {{post_to_update.created_date}} <br>
+    {{post_to_update.visibilpost_to_update}}
+    
+    {% if request.user == post_to_update.author  %}
+    <a href="{% url 'posts:update_post' post_to_update.id %}">update</a> <br>
+    <a href="{% url 'posts:delete_post' post_to_update.id %}">delete</a>
+    {% endif %}
+
+
+</body>
+</html>

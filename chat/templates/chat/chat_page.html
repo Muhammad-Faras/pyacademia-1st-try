@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+<body>
+    chat app 
+
+    <textarea name="" id="textarea-log" cols="50" rows="10"></textarea>
+    <br>
+    <input type="text" id="textmessage-log"> <br>
+    <input type="button" value="chat send" id="chatsend-log">
+    <script>
+        var ws = new WebSocket('ws://127.0.0.1:8000/ws/sc/');
+
+        ws.onopen = function(event){
+            console.log('websocket open');
+        }
+        ws.onmessage = function(event){
+            const mess = JSON.parse(event.data);
+            console.log(mess.msg);
+            document.querySelector('#textarea-log').value += (mess.msg + '\n')
+        }
+        ws.onerror = function(event){
+            console.log('websocket error');
+        }
+        ws.onclose = function(event){
+            console.log('websocket closed');
+        }
+
+        document.getElementById('chatsend-log').onclick = 
+        function(event){
+            const textmessageDom = document.getElementById('textmessage-log')
+            const textmessage = textmessageDom.value
+            ws.send(JSON.stringify({
+                'msg':textmessage,
+            }))
+            textmessageDom.value = ''
+        }
+
+    //     ws.addEventListener('open', (event) =>{
+    //     console.log('connection open...',event.data);
+    //     ws.send('message from client');
+    //     })
+
+    // ws.addEventListener('message', (event) =>{
+    //     console.log('...',event.data);
+    //     var servre_data = JSON.parse(event.data)
+    //     document.getElementById('head2').innerText = servre_data.server_text
+    // })
+    </script>
+</body>
+</html>

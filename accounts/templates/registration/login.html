@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <form action="" method="post">
+        {{form.as_p}}
+        {% csrf_token %}
+        <!-- {% csrf_token %}
+        <label for="">{{form.username.label_tag}}</label>
+        {{form.username}} <br>
+        <label for="">{{form.password.label_tag}}</label>
+        {{form.password}} -->
+        <button type="submit">login</button>
+    </form>
+</body>
+</html>
