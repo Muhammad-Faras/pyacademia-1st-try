@@ -3,6 +3,7 @@ import json
 from asgiref.sync import async_to_sync
 class MySyncConsumer(SyncConsumer):
     def websocket_connect(self, event):
+        print('user = ', self.scope["user"])
         print('------------------ websocker_connect--------------')
         print('websocket connect...', event)
         print('channel layer...', self.channel_layer)   # channel layer
@@ -19,10 +20,20 @@ class MySyncConsumer(SyncConsumer):
     def websocket_receive(self, event):
         print('------------------ websocket receive--------------')
         print(event['text'])
-        async_to_sync(self.channel_layer.group_send)('programmers',{
+        if self.scope['user'].is_authenticated:
+             async_to_sync(self.channel_layer.group_send)('programmers',{
             'type': 'chat.message',
             'message':event['text']
-        })  
+            })
+        else:
+            response = {
+            'msg': 'user is not authenticated'
+            }
+            json_response = json.dumps(response)
+            self.send({
+            'type': 'websocket.send',
+            'text': json_response,
+            })
     def chat_message(self, event):
         print('Event...',event)
         print('Event...',event['message'])
