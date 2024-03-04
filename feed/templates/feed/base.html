@@ -8,6 +8,7 @@
 <body>
     <header>
         {% if user.is_authenticated %}
+        <a href="{% url 'chat:chat' %}">messaging</a>
             Hi {{ user.username }}! ||| <a href="{% url 'posts:create_posts' %}">Create Post</a>
              <a href="{% url 'posts:my_posts'%}">My Posts</a>
              <hr>
