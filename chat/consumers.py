@@ -1,6 +1,10 @@
 from channels.consumer import SyncConsumer
 import json
 from asgiref.sync import async_to_sync
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 class MySyncConsumer(SyncConsumer):
     def websocket_connect(self, event):
         print('user = ', self.scope["user"])
@@ -9,6 +13,7 @@ class MySyncConsumer(SyncConsumer):
         print('channel layer...', self.channel_layer)   # channel layer
         print('channel layer...', self.channel_name)   # channel name
         # all methods are written in async consumers so firstly we have to change asyns_to_sync
+       
         async_to_sync(self.channel_layer.group_add)(
             'programmers',
             self.channel_name
@@ -21,10 +26,13 @@ class MySyncConsumer(SyncConsumer):
         print('------------------ websocket receive--------------')
         print(event['text'])
         if self.scope['user'].is_authenticated:
-             async_to_sync(self.channel_layer.group_send)('programmers',{
+            
+          
+            async_to_sync(self.channel_layer.group_send)('programmers',{
             'type': 'chat.message',
-            'message':event['text']
+            'message': event['text'],
             })
+
         else:
             response = {
             'msg': 'user is not authenticated'
@@ -37,9 +45,13 @@ class MySyncConsumer(SyncConsumer):
     def chat_message(self, event):
         print('Event...',event)
         print('Event...',event['message'])
+        user = self.scope['user']
+        user_skills = user.skills
+        print(user_skills)
+        print(type(user_skills))
         self.send({
             'type':'websocket.send',
-            'text':event['message']
+            'text':event['message'],
         }
         )
     def websocket_disconnect(self, event):

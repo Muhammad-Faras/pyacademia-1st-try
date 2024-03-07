@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{cats}}
+
+{% if post_categories %}
+{% for cat_post in post_categories %}
+    <a href="{% url 'posts:detail_post' cat_post.id %}">{{cat_post.title}} {{cat_post.created_date}}  {{cat_post.author}} {{cat_post.category}}</a> 
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="">like</a> 
+    <hr>
+{% endfor %}
+
+{% else %}
+
+<h1>{{cats}} related posts not available</h1>
+{% endif %}
+</body>
+</html>

@@ -1,5 +1,11 @@
 {% extends 'home/base.html' %}
-{% load static %}
+<!-- {% load static %} -->
+{% block extra_css %}
+<!-- {{ block.super }} -->
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}"> 
+{% endblock %}
+
+
 {% block content %}
     <section class="parent-section">
         <div class="left-section">
@@ -19,10 +25,10 @@
         </div>
         <div class="right-section">
             <div class="rsec-bacimg">
-                <img src="{% static 'home/images/rsec-backimg.png' %}" alt="">
+                <img width="100px" height="100px" src="{% static 'home/images/background-img.png' %}" alt="">
             </div>
         </div>
     </section>
-{% endblock %}
+    {% endblock %}
     
 

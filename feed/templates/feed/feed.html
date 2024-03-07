@@ -1,20 +1,45 @@
 {% extends 'feed/base.html' %} 
+<!-- {% load static %} -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'feed/css/feed.css' %}">
+{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-{% for post in list_posts%}
-    <a href="{% url 'posts:detail_post' post.id %}">{{post.title}} {{post.created_date}}  {{post.author}} </a> 
-    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="">like</a> 
-    <hr>
-{% endfor %}
-<!-- <p><a href="{% url 'password_change' %}">Password Change</a></p> -->
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Log Out</button>
-</form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-{% endif %}
+<!-- {% if user.is_authenticated %}
+        <a href="{% url 'chat:chat' %}">messaging</a>
+            Hi {{ user.username }}! ||| <a href="{% url 'posts:create_posts' %}">Create Post</a>
+             <a href="{% url 'posts:my_posts'%}">My Posts</a>
+             <hr>
+        {% endif %} -->
 
+  <section class="parent-section">
+    {% if user.is_authenticated %}
+    <a href="{% url 'posts:create_posts' %}">Create Post</a>
+        {% for post in list_posts %}
+          <div class="post-inner-card">
+            <div class="post-user">
+              <p>  {{post.author}}</p> 
+              <p>{{post.created_date}}</p>
+            </div>
+            <div class="post-body">
+              <a  class="title" href="{% url 'posts:detail_post' post.id %}">{{post.title}} </a>
+              
+              <a class="category" href="{% url 'posts:post_category' post.category %}">{{post.category}}</a>
+              <form action="{% url 'posts:post_like' post.id %}" method="post">
+                {% csrf_token %}
+                <p>total likes are {{ post.likes.count }}</p>
+                <button type="submit" >
+                  {% if request.user in post.likes.all %}
+                  Unlike
+              {% else %}
+                  Like
+              {% endif %}</button>
+              </form>
+            </div>
+          </div>
+          
+        {% endfor %}   
+      
+    {% endif %}
+  </section>
 {% endblock %}

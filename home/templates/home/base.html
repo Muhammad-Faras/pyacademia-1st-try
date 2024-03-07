@@ -7,33 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PyAcademia | Home</title>
     <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+    {% block extra_css %}
+    {% endblock %}
 </head>
 <body>
-                <!-- ****************** -->
-                <!-- Header starts here -->
-                <!-- ****************** -->
-    <header>
+           
+     <header>
         <nav>
             <div class="logo">
-               <a href="">PyAcademia</a>    
+                <a href="">
+                    <span class="first-word">Py</span> Academia
+                </a>
             </div>
             <div class="menu">
-                <a href="">Home</a> 
-                <a href="">Network</a> 
-                <a href="{% url 'feed:feed' %}">Feed</a> 
-                <a href="">Messaging</a>
+                 <a href="#">Home</a> 
+                 <a href="#">Network</a> 
+                 <a href="{% url 'feed:feed'%}">Feed</a> 
+                 <a href="">Messaging</a>
+                
 
-                <div class="sigunup">
-                    <a href="{% url 'accounts:signup' %}">Join Now</a>
-                </div>
-                <div class="login">
-                    <a href="{% url 'login' %}">Login</a>
-                </div>
+                 
+            </div>
+            <div class="signup" >
+                <a href="{% url 'accounts:signup' %}">Register</a>
             </div>
         </nav>
     </header>
-            
     {% block content %}
     
     {% endblock %}

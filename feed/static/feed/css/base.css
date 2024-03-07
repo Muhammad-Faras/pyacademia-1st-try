@@ -60,7 +60,7 @@ nav .menu{
 }
 
 /* signup here */
-nav .signup > a{
+nav .signup form button{
     font-weight: 570;
     font-size: 20px;
     color: #6D42FF;
@@ -71,7 +71,7 @@ nav .signup > a{
     background-color: #F5F6FA;
     
 }
-nav .signup > a:hover{
+nav .signup form button:hover{
     text-decoration: none;
     cursor: pointer;
     background-color: #6D42FF;

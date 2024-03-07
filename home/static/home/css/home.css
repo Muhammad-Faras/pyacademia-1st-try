@@ -8,9 +8,9 @@
 }
 
 .parent-section{
+    margin-top: 90px;
     padding: 0px 0px 20px 95px;
     display: flex;
-    /* border: 1px solid black; */
     justify-content: space-between;
 
 }
@@ -23,7 +23,7 @@
 .left-section .lsec-title h1{
     font-size: 56px;
     font-weight: 300;
-    color: #b24020;
+    color: #6D42FF;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -34,7 +34,10 @@
 .lsec-form form{
     display: flex;
     flex-direction: column;
+    
 }
+
+
 .lsec-form form label{
     margin-bottom: 5px;
     color: rgba(0, 0, 0, 0.75);
@@ -57,12 +60,25 @@
     color: #0a66c2;
     font-size: 20px;
     font-weight: 550;
+    margin-bottom: 10px;
 }
 
 .lsec-form form .lsec-forgbtn:hover{
     text-decoration:underline
 }
 
+.lsec-form .lsec-logbtn{
+    color: white;
+    cursor: pointer;
+    background-color:#6D42FF;
+    font-size: 20px;
+    padding: 5px 5px;
+    border: 1px solid #6D42FF;
+    border-radius: 23px;
+    margin-left: 200px;
+    width: 28%;
+    
+}
 
 .right-section{
     position: relative;

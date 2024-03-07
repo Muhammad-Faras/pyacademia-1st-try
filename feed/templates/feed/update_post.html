@@ -6,11 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+        {% if request.user == post_to_update.author  %}
     <form action="{% url 'posts:update_post' post_to_update.id %}" method="post" >
         {% csrf_token %}
         {{form.as_p}}
      <button type="submit">Update Post</button>
     </form>
-    asdasd
+        {% endif %}
+        {% endif %}
+    
 </body>
 </html>
